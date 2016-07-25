@@ -10,7 +10,7 @@
 
 
 - name: Install Grafana
-  hosts: influx
+  hosts: grafana
   become: yes
   roles:
     - grafana

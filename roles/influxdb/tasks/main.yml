@@ -1,8 +1,8 @@
 ---
 
-- name: Add influxDB repo(Centos/Redhat)
+- name: Add InfluxDB repo(Centos/Redhat)
   yum_repository:
-    name: influxdb
+    name: Influxdb
     description: influxdb repo
     baseurl: https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
     gpgcheck: yes
@@ -14,8 +14,52 @@
     name: influxdb
   when: ansible_os_family == "RedHat"
 
+- name: Disable auth
+  replace:
+    dest: /etc/influxdb/influxdb.conf
+    regexp: 'auth-enabled\s*=\s*true'
+    replace: 'auth-enabled = false'
 
-- name: Ensure influxDB started
+- name: Ensure influxDB restarted
   service:
     name: influxdb
-    state: started
+    state: restarted
+
+- name: Wait for influxDB to start
+  wait_for:
+    port: 8086
+
+- name: Create users
+  command: influx -execute "CREATE USER {{ item.user }} WITH PASSWORD '{{ item.password }}'"
+  with_items: "{{ influxdb.users }}"
+
+- name: Create admin user
+  command: influx -execute "CREATE USER {{ influxdb.username }} WITH PASSWORD '{{ influxdb.password }}' WITH ALL PRIVILEGES"
+
+- name: Install InfluxDB python package
+  pip:
+    name: influxdb
+
+- name: Create databases
+  influxdb_database:
+    hostname: "{{ influxdb.ip }}"
+    username: "{{ influxdb.username }}"
+    password: "{{ influxdb.password }}"
+    database_name: "{{ item }}"
+    state: present
+  with_items: "{{ influxdb.dbs }}"
+
+- name: Grant priviliges
+  command: influx -execute "GRANT READ ON {{ item.dbs }} TO {{ item.user }}"
+  with_items: "{{ influxdb.users }}"
+
+- name: Enable auth
+  replace:
+    dest: /etc/influxdb/influxdb.conf
+    regexp: 'auth-enabled\s*=\s*false'
+    replace: 'auth-enabled = true'
+
+- name: Ensure influxDB restarted
+  service:
+    name: influxdb
+    state: restarted
