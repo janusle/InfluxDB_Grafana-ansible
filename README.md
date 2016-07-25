@@ -16,6 +16,9 @@ ansible-playbook -i environments/vagrant influxdb_grafana.yml
 
 ## TODO:
 
+0. Add tasks for deploying IG stack on Ubuntu
+
 1. Tasks for setting up account in grafana
 
 2. Tasks for importing dashborads
+
