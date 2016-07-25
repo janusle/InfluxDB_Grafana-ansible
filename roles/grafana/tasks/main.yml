@@ -1,0 +1,23 @@
+---
+
+- name: Add Grafana repo(Centos/Redhat)
+  yum_repository:
+    name: grafana
+    description: grafana repo
+    baseurl: https://packagecloud.io/grafana/stable/el/6/$basearch
+    gpgcheck: yes
+    gpgkey: https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+    sslcacert: /etc/pki/tls/certs/ca-bundle.crt
+  when: ansible_os_family == "RedHat"
+
+
+- name: Install grafana
+  yum:
+    name: grafana
+  when: ansible_os_family == "RedHat"
+
+
+- name: Ensure grafana started
+  service:
+    name: grafana-server
+    state: started
