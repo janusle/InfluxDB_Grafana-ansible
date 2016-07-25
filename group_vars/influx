@@ -1,0 +1,14 @@
+---
+
+influxdb:
+  ip: 127.0.0.1
+  dbs:
+    - testdb1
+    - testdb2
+  username: root
+  password: root
+
+  users:
+    - user: daemon
+      password: daemon
+      dbs: testdb1
