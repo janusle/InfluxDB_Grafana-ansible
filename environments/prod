@@ -1,0 +1,5 @@
+[influx]
+dg_db_box
+
+[grafana]
+dg_db_box
