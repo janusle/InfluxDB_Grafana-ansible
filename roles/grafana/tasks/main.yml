@@ -17,6 +17,24 @@
   when: ansible_os_family == "RedHat"
 
 
+- name: Add apt repository
+  apt_repository:
+    repo: 'deb https://packagecloud.io/grafana/stable/debian/ wheezy main'  #TODO: remove hardcode version number
+  when: ansible_distribution == "Ubuntu"
+
+- name: Add grafana apt key
+  apt_key:
+    url: https://packagecloud.io/grafana/stable/gpgkey
+  when: ansible_distribution == "Ubuntu"
+
+
+- name: Install grafana
+  apt:
+    name: grafana
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+
 - name: Ensure grafana started
   service:
     name: grafana-server

@@ -1,5 +1,5 @@
 [influx]
-vagrant_centos
+vagrant
 
 [grafana]
-vagrant_centos
+vagrant
