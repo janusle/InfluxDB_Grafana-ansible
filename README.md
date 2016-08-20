@@ -8,10 +8,8 @@ The following packages are included:
 2. [Redis](http://redis.io/)
 3. [Airflow](https://github.com/apache/incubator-airflow)
 4. [Celery](http://docs.celeryproject.org/en/latest/)  
-
-*Note: The following are for monitoring*
-5. [InfluxDB](https://influxdata.com/)
-6. [Grafana](http://grafana.org/)
+5. [InfluxDB](https://influxdata.com/) *'For monitoring'*  
+6. [Grafana](http://grafana.org/) *'For monitoring'*  
 
 ## TODO:
 
@@ -19,7 +17,7 @@ The following packages are included:
 2. [jupyterhub](https://github.com/jupyterhub/jupyterhub)
 3. [Apache Kafaka](http://kafka.apache.org/)
 4. [Apache Spark](http://spark.apache.org/)
-5. [Nginx](https://nginx.org/en/) *'for load balancer'*
+5. [Nginx](https://nginx.org/en/) *'For load balancer'*
 
 ## Usage:
 
