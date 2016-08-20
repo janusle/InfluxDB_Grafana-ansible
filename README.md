@@ -5,15 +5,18 @@ Ansible playbook for deploying data pipline infrastructure for my personal proje
 The following packages are included:
 
 1. [PostgreSQL](https://www.postgresql.org/)
-2. [Airflow](https://github.com/apache/incubator-airflow)
-3. [InfluxDB](https://influxdata.com/)
-4. [Grafana](http://grafana.org/)
+2. [Redis](http://redis.io/)
+3. [Airflow](https://github.com/apache/incubator-airflow)
+4. [Celery](http://docs.celeryproject.org/en/latest/)
+5. [InfluxDB](https://influxdata.com/)
+6. [Grafana](http://grafana.org/)
 
 ## TODO:
 
 1. [Caravel](https://github.com/airbnb/caravel)
-2. [Apache Kafaka](http://kafka.apache.org/)
-3. [Apache Spark](http://spark.apache.org/)
+2. [jupyterhub](https://github.com/jupyterhub/jupyterhub)
+3. [Apache Kafaka](http://kafka.apache.org/)
+4. [Apache Spark](http://spark.apache.org/)
 
 ## Usage:
 
@@ -34,4 +37,9 @@ ansible-playbook -i environments/[env_file] influxdb_grafana.yml
 
 ```bash
 ansible-playbook -i environments/[env_file] influxdb_grafana.yml
+```
+
+### Queue/Cache service
+```bash
+ansible-playbook -i environments/[env_file] queue_cache.yml
 ```

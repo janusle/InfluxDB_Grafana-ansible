@@ -6,3 +6,6 @@ vagrant
 
 [airflow]
 vagrant
+
+[queue_cache]
+vagrant

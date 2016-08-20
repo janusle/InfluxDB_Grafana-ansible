@@ -1,0 +1,8 @@
+---
+
+- name: Install Redis
+  hosts: queue_cache
+  become: yes
+  roles:
+    - redis
+    - celery
