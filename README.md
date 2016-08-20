@@ -12,6 +12,8 @@ The following packages are included:
 ## TODO:
 
 1. [Caravel](https://github.com/airbnb/caravel)
+2. [Apache Kafaka](http://kafka.apache.org/)
+3. [Apache Spark](http://spark.apache.org/)
 
 ## Usage:
 
