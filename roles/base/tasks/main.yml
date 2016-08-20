@@ -13,7 +13,8 @@
     - libpq-dev
     - postgresql-client
     - python-psycopg2
-
+    - htop
+    - tmux
 
 - name: Install virtualenv
   pip:
