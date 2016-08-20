@@ -1,0 +1,60 @@
+---
+
+- name: Install airflow
+  pip:
+    name: airflow
+
+- name: Install airflow deps
+  pip:
+    name: "{{ item }}"
+  items:
+    - airflow[postgres]
+    - airflow[password]
+    - airflow[crypto]
+
+
+- name: Create db user in postgresql for airflow
+  postgresql_user:
+    name: "{{ postgresql.db_user }}"
+    password: "{{ postgresql.db_password }}"
+    role_attr_flags: LOGIN,REPLICATION
+  become_user: postgres
+  become: yes
+
+
+- name: Create db in postgresql for airflow
+  postgresql_db:
+    name: "{{ postgresql.db_name }}"
+    owner: "{{ postgresql.db_user }}"
+  become_user: postgres
+  become: yes
+
+
+- name: Create directory for airflow
+  file:
+    path: "{{ airflow.dir }}"
+    state: directory
+
+
+- name: Create configuration file
+  template:
+    src: airflow.cfg.j2
+    dest: "{{ airflow.dir }}/airflow.cfg"
+
+- name: Init db for airflow
+  command: airflow initdb
+  environment:
+    AIRFLOW_HOME: "{{ airflow.dir }}"
+
+- name: Create supervisor conf for airflow scheduler
+  template:
+    src: airflow_scheduler.conf.j2
+    dest: /etc/supervisor/conf.d/airflow_scheduler.conf
+  notify: restart airflow_scheduler
+
+
+- name: Create supervisor conf for airflow web
+  template:
+    src: airflow_web.conf.j2
+    dest: /etc/supervisor/conf.d/airflow_web.conf
+  notify: restart airflow_web
