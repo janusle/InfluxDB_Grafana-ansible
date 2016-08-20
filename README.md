@@ -1,6 +1,17 @@
-# InfluxDB_Grafana-ansible
+# Data pipline infrastructure ansible playbook
 
-Ansible playbook for deploying InfluxDB + Grafana stack
+Ansible playbook for deploying data pipline infrastructure for my personal projects
+
+The following packages are included:
+
+1. [PostgreSQL](https://www.postgresql.org/)
+2. [Airflow](https://github.com/apache/incubator-airflow)
+3. [InfluxDB](https://influxdata.com/)
+4. [Grafana](http://grafana.org/)
+
+## TODO:
+
+1. [Caravel](https://github.com/airbnb/caravel)
 
 ## Usage:
 
@@ -10,15 +21,15 @@ Ansible playbook for deploying InfluxDB + Grafana stack
 
 3. Deploy
 
+### InfluxDB + Grafana
+
+
+```bash
+ansible-playbook -i environments/[env_file] influxdb_grafana.yml
 ```
-ansible-playbook -i environments/vagrant influxdb_grafana.yml
+
+### Airflow
+
+```bash
+ansible-playbook -i environments/[env_file] influxdb_grafana.yml
 ```
-
-## TODO:
-
-0. Add tasks for deploying IG stack on Ubuntu
-
-1. Tasks for setting up account in grafana
-
-2. Tasks for importing dashborads
-

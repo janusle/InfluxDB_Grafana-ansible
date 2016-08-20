@@ -3,3 +3,6 @@ vagrant
 
 [grafana]
 vagrant
+
+[airflow]
+vagrant

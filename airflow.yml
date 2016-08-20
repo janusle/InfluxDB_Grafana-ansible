@@ -1,0 +1,9 @@
+---
+  
+- name: Install Airflow
+  hosts: airflow
+  become: yes
+  roles:
+    - airflow
+  tags:
+    - airflow

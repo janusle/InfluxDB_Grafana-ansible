@@ -1,3 +1,9 @@
 *.retry
+
+# Env
 prod
+
+# Group vars
+all
 influx
+airflow

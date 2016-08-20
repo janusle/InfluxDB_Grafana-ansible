@@ -12,3 +12,4 @@ influxdb:
     - user: daemon
       password: daemon
       dbs: testdb1
+      

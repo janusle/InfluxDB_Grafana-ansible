@@ -45,12 +45,14 @@
   wait_for:
     port: 8086
 
+- name: Create admin user
+  command: influx -execute "CREATE USER {{ influxdb.username }} WITH PASSWORD '{{ influxdb.password }}' WITH ALL PRIVILEGES"
+  ignore_errors: yes
+
 - name: Create users
   command: influx -execute "CREATE USER {{ item.user }} WITH PASSWORD '{{ item.password }}'"
   with_items: "{{ influxdb.users }}"
-
-- name: Create admin user
-  command: influx -execute "CREATE USER {{ influxdb.username }} WITH PASSWORD '{{ influxdb.password }}' WITH ALL PRIVILEGES"
+  ignore_errors: yes
 
 - name: Install InfluxDB python package
   pip:

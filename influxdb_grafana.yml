@@ -1,6 +1,14 @@
 ---
 
 - name: Install InfluxDB
+  hosts: all
+  become: yes
+  roles:
+    - base
+  tags:
+    - base
+
+- name: Install InfluxDB
   hosts: influx
   become: yes
   roles:

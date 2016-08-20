@@ -1,0 +1,10 @@
+---
+
+airflow:
+  dir: /srv/airflow
+  db_conn: postgresql+psycopg2://janusle:janusle@localhost:5432/airflow
+
+postgresql:
+  db_user: janusle
+  db_password: janusle
+  db_name:  airflow
