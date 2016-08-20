@@ -7,7 +7,7 @@ The following packages are included:
 1. [PostgreSQL](https://www.postgresql.org/)
 2. [Redis](http://redis.io/)
 3. [Airflow](https://github.com/apache/incubator-airflow)
-4. [Celery](http://docs.celeryproject.org/en/latest/)
+4. [Celery](http://docs.celeryproject.org/en/latest/)  
 *The following are for monitoring*
 5. [InfluxDB](https://influxdata.com/)
 6. [Grafana](http://grafana.org/)
