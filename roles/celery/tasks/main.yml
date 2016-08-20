@@ -1,5 +1,0 @@
----
-
-- name: Install celery
-  pip:
-    name: celery

@@ -9,3 +9,6 @@ vagrant
 
 [queue_cache]
 vagrant
+
+[worker]
+vagrant

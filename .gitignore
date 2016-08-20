@@ -7,3 +7,4 @@ environments/prod
 group_vars/all
 group_vars/influx
 group_vars/airflow
+group_vars/worker

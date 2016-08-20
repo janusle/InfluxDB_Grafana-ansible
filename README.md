@@ -46,3 +46,8 @@ ansible-playbook -i environments/[env_file] influxdb_grafana.yml
 ```bash
 ansible-playbook -i environments/[env_file] queue_cache.yml
 ```
+
+### Worker
+```bash
+ansible-playbook -i environments/[env_file] worker.yml
+```

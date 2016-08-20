@@ -20,6 +20,10 @@
   pip:
     name: virtualenv
 
+- name: Install ipython
+  pip:
+    name: ipython
+
 
 - name: Install supervisor
   include: supervisor.yml

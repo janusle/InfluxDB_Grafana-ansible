@@ -1,0 +1,9 @@
+---
+
+- name: Set up worker node
+  hosts: worker
+  become: yes
+  roles:
+    - worker
+  tags:
+    - worker
