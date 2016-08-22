@@ -23,4 +23,5 @@
     path: "{{ workers.dir }}"
     state: directory
     owner: "{{ workers.user }}"
+    group: staff
     recurse: yes

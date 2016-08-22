@@ -1,5 +1,5 @@
 ---
 
 workers:
-  user: quokka
+  user: airflow
   dir: /srv/data

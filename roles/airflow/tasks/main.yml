@@ -16,6 +16,7 @@
   pip:
     name: "{{ item }}"
   items:
+    - airflow[redis]
     - airflow[postgres]
     - airflow[password]
     - airflow[crypto]
@@ -42,6 +43,7 @@
     path: "{{ item }}"
     state: directory
     owner: "{{ airflow.user }}"
+    group: staff
     recurse: yes
   with_items:
     - "{{ airflow.dir }}"

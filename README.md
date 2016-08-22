@@ -18,6 +18,7 @@ The following packages are included:
 3. [Apache Kafaka](http://kafka.apache.org/)
 4. [Apache Spark](http://spark.apache.org/)
 5. [Nginx](https://nginx.org/en/) *'For load balancer'*
+5. [Postfix](http://www.postfix.org/) *'For sending notification'*
 
 ## Usage:
 
