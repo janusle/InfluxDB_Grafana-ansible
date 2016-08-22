@@ -1,0 +1,27 @@
+---
+
+- name: Install python packages
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - ipython
+    - scrapy
+    - celery
+
+
+- name: Add a new user for workers
+  user:
+    name: "{{ workers.user }}"
+    group: staff
+    state: present
+    append: yes
+    shell: /bin/bash
+
+
+- name: Create directories
+  file:
+    path: "{{ workers.dir }}"
+    state: directory
+    owner: "{{ workers.user }}"
+    group: staff
+    recurse: yes

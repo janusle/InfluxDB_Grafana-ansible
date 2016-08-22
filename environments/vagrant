@@ -3,3 +3,12 @@ vagrant
 
 [grafana]
 vagrant
+
+[airflow]
+vagrant
+
+[queue_cache]
+vagrant
+
+[worker]
+vagrant

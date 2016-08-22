@@ -1,0 +1,33 @@
+---
+
+- name: Install common dependencies
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items:
+    - git-core
+    - build-essential
+    - python-setuptools
+    - python-pip
+    - python-dev
+    - libpq-dev
+    - postgresql-client
+    - python-psycopg2
+    - htop
+    - tmux
+
+- name: Install virtualenv
+  pip:
+    name: virtualenv
+
+- name: Install ipython
+  pip:
+    name: ipython
+
+
+- name: Install supervisor
+  include: supervisor.yml
+
+
+- name: Add users
+  include: add_users.yml

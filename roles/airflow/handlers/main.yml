@@ -1,0 +1,11 @@
+---
+
+- name: restart airflow_scheduler
+  supervisorctl:
+    name: airflow_scheduler
+    state: restarted
+
+- name: restart airflow_web
+  supervisorctl:
+    name: airflow_web
+    state: restarted

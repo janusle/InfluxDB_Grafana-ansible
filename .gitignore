@@ -1,3 +1,10 @@
 *.retry
-prod
-influx
+
+# Env
+environments/prod
+
+# Group vars
+group_vars/all
+group_vars/influx
+group_vars/airflow
+group_vars/worker
