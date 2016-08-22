@@ -1,5 +1,14 @@
 [influx]
-vagrant_centos
+vagrant
 
 [grafana]
-vagrant_centos
+vagrant
+
+[airflow]
+vagrant
+
+[queue_cache]
+vagrant
+
+[worker]
+vagrant

@@ -9,10 +9,26 @@
     gpgkey: https://repos.influxdata.com/influxdb.key
   when: ansible_os_family == "RedHat"
 
-- name: Install influxDB(CentOS/Redhat)
+- name: Install InfluxDB(CentOS/Redhat)
   yum:
     name: influxdb
   when: ansible_os_family == "RedHat"
+
+- name: Add InfluxDB apt key
+  apt_key:
+    url: https://repos.influxdata.com/influxdb.key
+  when: ansible_distribution == "Ubuntu"
+
+- name: Add apt repository
+  apt_repository:
+    repo: 'deb https://repos.influxdata.com/ubuntu trusty stable'  #TODO: remove hardcode version number
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install InfluxDB
+  apt:
+    name: influxdb
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
 
 - name: Disable auth
   replace:
@@ -29,12 +45,14 @@
   wait_for:
     port: 8086
 
+- name: Create admin user
+  command: influx -execute "CREATE USER {{ influxdb.username }} WITH PASSWORD '{{ influxdb.password }}' WITH ALL PRIVILEGES"
+  ignore_errors: yes
+
 - name: Create users
   command: influx -execute "CREATE USER {{ item.user }} WITH PASSWORD '{{ item.password }}'"
   with_items: "{{ influxdb.users }}"
-
-- name: Create admin user
-  command: influx -execute "CREATE USER {{ influxdb.username }} WITH PASSWORD '{{ influxdb.password }}' WITH ALL PRIVILEGES"
+  ignore_errors: yes
 
 - name: Install InfluxDB python package
   pip:

@@ -1,0 +1,5 @@
+---
+
+workers:
+  user: airflow
+  dir: /srv/data

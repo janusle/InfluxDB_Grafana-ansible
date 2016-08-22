@@ -1,6 +1,24 @@
-# InfluxDB_Grafana-ansible
+# Data pipline infrastructure ansible playbook
 
-Ansible playbook for deploying InfluxDB + Grafana stack
+Ansible playbook for deploying data pipline infrastructure for my personal projects
+
+The following packages are included:
+
+1. [PostgreSQL](https://www.postgresql.org/)
+2. [Redis](http://redis.io/)
+3. [Airflow](https://github.com/apache/incubator-airflow)
+4. [Celery](http://docs.celeryproject.org/en/latest/)  
+5. [InfluxDB](https://influxdata.com/) *'For monitoring'*  
+6. [Grafana](http://grafana.org/) *'For monitoring'*  
+
+## TODO:
+
+1. [Caravel](https://github.com/airbnb/caravel)
+2. [jupyterhub](https://github.com/jupyterhub/jupyterhub)
+3. [Apache Kafaka](http://kafka.apache.org/)
+4. [Apache Spark](http://spark.apache.org/)
+5. [Nginx](https://nginx.org/en/) *'For load balancer'*
+5. [Postfix](http://www.postfix.org/) *'For sending notification'*
 
 ## Usage:
 
@@ -10,15 +28,25 @@ Ansible playbook for deploying InfluxDB + Grafana stack
 
 3. Deploy
 
+### InfluxDB + Grafana
+
+
+```bash
+ansible-playbook -i environments/[env_file] influxdb_grafana.yml
 ```
-ansible-playbook -i environments/vagrant influxdb_grafana.yml
+
+### Airflow
+
+```bash
+ansible-playbook -i environments/[env_file] influxdb_grafana.yml
 ```
 
-## TODO:
+### Queue/Cache service
+```bash
+ansible-playbook -i environments/[env_file] queue_cache.yml
+```
 
-0. Add tasks for deploying IG stack on Ubuntu
-
-1. Tasks for setting up account in grafana
-
-2. Tasks for importing dashborads
-
+### Worker
+```bash
+ansible-playbook -i environments/[env_file] worker.yml
+```
