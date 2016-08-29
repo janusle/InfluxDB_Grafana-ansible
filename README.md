@@ -38,7 +38,7 @@ ansible-playbook -i environments/[env_file] influxdb_grafana.yml
 ### Airflow
 
 ```bash
-ansible-playbook -i environments/[env_file] influxdb_grafana.yml
+ansible-playbook -i environments/[env_file] airflow.yml
 ```
 
 ### Queue/Cache service

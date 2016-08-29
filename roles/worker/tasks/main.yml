@@ -1,5 +1,13 @@
 ---
 
+- name: Install dependencies
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - libxml2-dev
+    - libxslt1-dev
+    - python-dev
+
 - name: Install python packages
   pip:
     name: "{{ item }}"

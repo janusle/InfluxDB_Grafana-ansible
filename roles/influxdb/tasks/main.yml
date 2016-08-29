@@ -21,7 +21,7 @@
 
 - name: Add apt repository
   apt_repository:
-    repo: 'deb https://repos.influxdata.com/ubuntu trusty stable'  #TODO: remove hardcode version number
+    repo: 'deb https://repos.influxdata.com/ubuntu trusty stable'
   when: ansible_distribution == "Ubuntu"
 
 - name: Install InfluxDB

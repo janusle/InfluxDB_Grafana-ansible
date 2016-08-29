@@ -1,5 +1,11 @@
 ---
 
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - libffi-dev
+
 - name: Add a new user for airflow
   user:
     name: "{{ airflow.user }}"
@@ -48,6 +54,8 @@
   with_items:
     - "{{ airflow.dir }}"
     - "{{ airflow.dir }}/dags"
+    - "/srv/etl/airflow_tpl"
+    - "/srv/etl/py_lib"
 
 - name: Create configuration file
   template:
